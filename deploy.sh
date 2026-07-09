@@ -1,21 +1,28 @@
 #!/usr/bin/env sh
 
-# abort on errors
+# Abort on errors.
 set -e
 
-# build
+REPO_URL="https://github.com/Intellify-Cloud/demo.git"
+PAGES_BRANCH="gh-pages"
+
+# Build the production bundle. Vite uses base: "/demo/" for GitHub Pages.
 npm run build
 
-# navigate into the build output directory
+# GitHub Pages should serve Vite assets exactly as built.
+touch dist/.nojekyll
+
+DIST_DIR="$(pwd)/dist"
+
 cd dist
 
-# if you are deploying to a custom domain
-# echo 'www.pendel.co.za' > CNAME
+# If you deploy to a custom domain later, uncomment and update:
+# echo 'www.example.com' > CNAME
 
-git init
-git add -A
-git commit -m 'deploy'
-
-git push -f https://github.com/Intellify-Cloud/demo master:gh-pages
+git -c safe.directory="$DIST_DIR" init
+git -c safe.directory="$DIST_DIR" checkout -B "$PAGES_BRANCH"
+git -c safe.directory="$DIST_DIR" add -A
+git -c safe.directory="$DIST_DIR" diff --cached --quiet || git -c safe.directory="$DIST_DIR" commit -m "deploy"
+git -c safe.directory="$DIST_DIR" push -f "$REPO_URL" "$PAGES_BRANCH:$PAGES_BRANCH"
 
 cd -

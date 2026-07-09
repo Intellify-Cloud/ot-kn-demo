@@ -4,7 +4,7 @@ import { nextTick } from 'vue'
 import { siteText } from '@/content/siteText'
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
