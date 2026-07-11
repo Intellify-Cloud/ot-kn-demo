@@ -32,9 +32,9 @@ export const siteText = {
     name: 'Template Site',
     description:
       'A reusable Vue shell with composable sections, centralized content, and light-mode design tokens.',
-    url: 'https://intellify-cloud.github.io/demo',
+    url: import.meta.env.VITE_SITE_URL || 'http://localhost:5173',
     locale: 'en_ZA',
-    ogImage: '/og-image.jpg',
+    ogImage: '/favicon.png',
   },
   theme: {
     colorScheme: 'light',
