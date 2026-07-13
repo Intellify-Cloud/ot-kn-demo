@@ -1,4 +1,8 @@
 <script setup lang="ts">
+// Full-bleed hero. Layout adapted from the shadcn/framer-motion
+// `hero-section-4` reference in docs/hero.md, rewritten as a Vite/Vue
+// component: no React, no framer-motion. The staggered mount reveal is
+// driven by the CSS `hero-rise` keyframes in assets/theme.css.
 defineProps<{
   image: string;
   imageAlt: string;
@@ -13,56 +17,54 @@ defineProps<{
 </script>
 
 <template>
-  <section class="mx-auto my-stack-lg max-w-container-max px-margin-mobile md:px-margin-desktop">
+  <section
+    class="relative flex h-screen min-h-[700px] w-full items-center justify-center overflow-hidden"
+  >
+    <!-- Background image, full-width cover -->
     <div
-      class="relative flex h-[55vh] items-center justify-start overflow-hidden rounded-3xl border border-outline-variant/20 shadow-soft"
-    >
-      <!-- Background image (contained so the whole image fits, no cropping) -->
-      <div class="absolute inset-0 z-0">
-        <div
-          class="h-full w-full bg-contain bg-center bg-no-repeat"
-          :style="{
-            backgroundImage: `url('${image}')`,
-            backgroundColor: '#f0eee9',
-          }"
-          role="img"
-          :aria-label="imageAlt"
-        ></div>
-        <!-- Subtle overlay for text readability -->
-        <div class="absolute inset-0 bg-black/20"></div>
-      </div>
+      class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+      :style="{ backgroundImage: `url('${image}')` }"
+      role="img"
+      :aria-label="imageAlt"
+    ></div>
 
-      <!-- Content card -->
-      <div class="relative z-10 w-full px-margin-mobile md:w-[45%] md:px-margin-desktop">
-        <div
-          class="rounded-xl border border-outline-variant/20 bg-surface/80 p-10 shadow-soft backdrop-blur-lg md:p-16"
+    <!-- Overlay for text readability -->
+    <div
+      class="absolute inset-0 z-0 bg-gradient-to-t from-black/60 via-black/30 to-black/40"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Centered content -->
+    <div
+      class="relative z-10 mx-auto flex max-w-4xl flex-col items-center justify-center px-margin-mobile text-center md:px-margin-desktop"
+    >
+      <h1
+        class="hero-rise d1 font-headline-xl text-headline-lg-mobile text-white md:text-headline-xl"
+      >
+        {{ heading }}
+        <br />
+        <span class="brushed-brass">{{ highlight }}</span>
+      </h1>
+      <p
+        class="hero-rise d2 mt-6 max-w-2xl font-body-lg text-body-lg leading-8 text-white/90"
+      >
+        {{ body }}
+      </p>
+      <div
+        class="hero-rise d3 mt-10 flex flex-wrap items-center justify-center gap-4"
+      >
+        <a
+          :href="ctaHref"
+          class="rounded-full bg-primary px-10 py-5 font-headline-md text-headline-md text-on-primary shadow-lg transition-[opacity,transform] hover:opacity-90 active:scale-95"
         >
-          <h1
-            class="hero-rise d1 mb-6 font-headline-xl text-headline-lg-mobile text-primary md:text-headline-xl"
-          >
-            {{ heading }} <br />
-            <span class="brushed-brass">{{ highlight }}</span>
-          </h1>
-          <p
-            class="hero-rise d2 mx-auto mb-10 max-w-xl font-body-lg text-body-lg text-on-surface-variant"
-          >
-            {{ body }}
-          </p>
-          <div class="hero-rise d3 flex flex-wrap items-center gap-4">
-            <a
-              :href="ctaHref"
-              class="rounded-full bg-primary px-10 py-5 font-headline-md text-headline-md text-on-primary shadow-lg transition-all hover:opacity-90 active:scale-95"
-            >
-              {{ cta }}
-            </a>
-            <a
-              :href="ctaSecondaryHref"
-              class="rounded-full border-2 border-secondary px-8 py-4 font-bold text-secondary transition-all hover:bg-secondary hover:text-on-secondary active:scale-95"
-            >
-              {{ ctaSecondary }}
-            </a>
-          </div>
-        </div>
+          {{ cta }}
+        </a>
+        <a
+          :href="ctaSecondaryHref"
+          class="rounded-full border-2 border-white/80 px-8 py-4 font-bold text-white transition-[background-color,color,transform] hover:bg-white hover:text-primary active:scale-95"
+        >
+          {{ ctaSecondary }}
+        </a>
       </div>
     </div>
   </section>
