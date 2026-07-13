@@ -12,5 +12,8 @@ import { siteText } from "../../content/siteText";
     :highlight="siteText.hero.highlight"
     :body="siteText.hero.body"
     :cta="siteText.hero.cta"
+    :cta-href="siteText.hero.ctaHref"
+    :cta-secondary="siteText.hero.ctaSecondary"
+    :cta-secondary-href="siteText.hero.ctaSecondaryHref"
   />
 </template>

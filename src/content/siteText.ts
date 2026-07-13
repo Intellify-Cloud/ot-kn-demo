@@ -12,6 +12,9 @@ export const siteText = {
     highlight: "Hello, I'm Kerriska Naidu.",
     body: "I'm an Occupational Therapist who graduated with an Honours Degree in Occupational Therapy from the University of KwaZulu-Natal. I completed my community service across many facilities, meeting children from every walk of life. I find real joy in paediatric OT and in working with the little hands that hold our future.",
     cta: "Start the Journey",
+    ctaHref: "#contact",
+    ctaSecondary: "My Approach",
+    ctaSecondaryHref: "#approach",
   },
   disciplines: {
     heading: "Where I Help",

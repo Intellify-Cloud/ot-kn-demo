@@ -30,4 +30,40 @@
   .fade-in-section.is-visible {
     @apply opacity-100 translate-y-0;
   }
+
+  /* Mount-time staggered reveal (ports framer-motion container/item variants) */
+  @keyframes heroRise {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-rise {
+    opacity: 0;
+    animation: heroRise 0.6s ease-out forwards;
+  }
+
+  .hero-rise.d1 {
+    animation-delay: 0.3s;
+  }
+
+  .hero-rise.d2 {
+    animation-delay: 0.5s;
+  }
+
+  .hero-rise.d3 {
+    animation-delay: 0.7s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-rise {
+      opacity: 1;
+      animation: none;
+    }
+  }
 }
