@@ -1,62 +1,64 @@
 # Template Usage
 
-This project is a Vue shell site. The homepage works like a Jekyll include list: edit one section registry, and the page composition changes.
+## Run it
 
-## Start A New Site
-
-1. Open `src/content/siteText.ts`.
-2. Update `site.name`, `site.description`, `site.url`, and `site.ogImage`.
-3. Edit the section content blocks.
-4. Reorder, add, or remove names in `sections`.
-5. Tune colors and spacing in `src/assets/theme.css`.
-6. Run `npm run build`.
-
-## Reorder Sections
-
-The homepage order is controlled by:
-
-```ts
-sections: [
-  "contact-bar",
-  "nav-bar",
-  "hero",
-  "about",
-  "steps",
-  "map",
-  "team",
-  "testimonials",
-  "contact",
-  "footer",
-],
+```bash
+npm install
+npm run dev       # http://localhost:5173
+npm run build      # type-check + production build to dist/
+npm run preview    # serve the production build locally
 ```
 
-Remove a section name to remove that block from the homepage.
+## Change the copy
 
-## Add A Section
+Almost everything editable lives in two files — you shouldn't need to
+touch component markup for text changes:
 
-1. Create a component in `src/components/sections`.
-2. Add its content object to `siteText.ts`.
-3. Add its name to the `sections` array.
-4. Add it to `componentMap` in `src/views/HomeView.vue`.
+- `src/assets/site.json` — nav links, hero image, discipline cards, the
+  visionary's bio/stats, process steps, footer links, studio address.
+- `src/content/siteText.ts` — headings, button labels, per-page `<title>`
+  and meta description copy.
 
-## Light And Future Dark Mode
+Images are referenced by URL in `site.json`. Swap in your own hosted
+images (or add files under `public/` and reference `/your-file.jpg`).
 
-Light mode is the default. The theme already includes a dormant `.theme-dark` variable block in `src/assets/theme.css`.
+## Add a page
 
-When you want a dark toggle later:
+1. Add a view in `src/views/YourView.vue`.
+2. Register a route in `src/router/index.ts`.
+3. Add copy to `siteText.pages` in `src/content/siteText.ts` if the page
+   needs a title/meta description (picked up automatically by
+   `useSeoHead`, keyed by route `name`).
+4. Link to it from `NavBar.vue` or `SiteFooter.vue` with `<RouterLink>`.
 
-1. Add or remove `theme-dark` on the document root.
-2. Store the user's choice in local storage.
-3. Keep all component colors on semantic variables like `--shell-color-canvas`, `--shell-color-surface`, and `--shell-color-ink`.
+## Add a section to the home page
 
-Do not hard-code dark colors inside components unless a section truly needs a unique treatment.
+1. Build a presentational primitive in `components/*Deck.vue` if the
+   layout is reusable, or just write markup straight into a
+   `components/sections/*.vue` file if it's a one-off.
+2. Pull its content from `site.json` / `siteText.ts` rather than
+   hardcoding strings.
+3. Wrap the section root with `v-reveal` if it should fade in on scroll.
+4. Drop the section into `src/views/HomeView.vue` in the order you want
+   it to appear.
 
-## Empty Content
+## Deploy
 
-Reusable sections should handle empty arrays or missing optional values gracefully:
+`vercel.json` rewrites all routes to `index.html` so client-side routing
+works on Vercel. `deploy.sh` installs, builds, and runs
+`vercel --prod` — run `vercel login` once first, or wire up the
+`VERCEL_TOKEN` env var in CI.
 
-- Empty `team.members` shows a template note.
-- Empty `testimonials.items` shows a template note.
-- Empty `map.embedUrl` shows a map placeholder.
+`.env.development` / `.env.production` hold `VITE_*` variables read via
+`import.meta.env`. Update `VITE_SITE_URL` in `.env.production` to your
+real domain before deploying (used for canonical/meta tags if you extend
+`useSeoHead`).
 
-For production sites, either fill the content or remove that section name from the registry.
+## What's intentionally not included
+
+- **Testimonials**: no real patient quotes existed in the source mock, so
+  none were invented. See `docs/composer-plan.md` for why.
+- **CMS wiring**: content is static JSON/TS, not fetched from a backend.
+  If you outgrow that, the natural seam is swapping `site.json`'s import
+  for a fetch inside a Pinia store (`src/stores/`) and reading from the
+  store in sections instead of importing the JSON directly.

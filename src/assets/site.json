@@ -1,386 +1,100 @@
 {
-  "name": "Intellify",
-  "whatsapp": "27829579336",
-  "email": "pieter@intellify.co.za",
-  "support_email": "support@intellify.co.za",
-  "contact_url": "/contact/",
-  "nav": {
-    "logo": "intellify",
-    "links": [
-      { "label": "Mission", "href": "/#mission" },
-      { "label": "Pricing", "href": "/#services" },
-      { "label": "Portfolio", "href": "/portfolio" },
-      { "label": "Contact", "href": "/contact" }
+  "brand": {
+    "name": "Kerriska Naidu",
+    "tagline": "Little Hands, Big Futures"
+  },
+  "nav": [
+    { "label": "Services", "href": "#services" },
+    { "label": "Our Approach", "href": "#approach" },
+    { "label": "About Us", "href": "#about" }
+  ],
+  "hero": {
+    "image": "/images/hero/hero.png",
+    "imageAlt": "Kerriska Naidu, paediatric occupational therapist, working with a child in a warm, play-based therapy space."
+  },
+  "disciplines": [
+    {
+      "size": "large",
+      "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuCVgV6CGNopZt99T3kzGqfi5Zt--J0Rw_x-9IFSaE_6AUV0bKVMSFVsW1YS6KT_nzyDtcxVkwDTywpKtph_f0H3d6_0wZXHmu2YUVFNTlTNJMjcUNtd_LiDUswjOxS4tbZQGrziHPLa2AStUrTNR6wgNdW2ZGj_hx43dLB7oVk9HYDhXhrua1zQ8Wskj2ledKbJYOgehwV4n3EXzOa1wfIQXqQbBsW1Zt9L2aCVffBaMoDYcl8IwkyjvQ",
+      "imageAlt": "A focused close-up of a child working on fine motor skills through playful therapy.",
+      "eyebrow": "Paediatric OT",
+      "title": "Building Blocks of Play",
+      "description": "Supporting the small skills that grow into big independence, one playful session at a time."
+    },
+    {
+      "size": "small",
+      "icon": "hand_gesture",
+      "title": "Fine Motor Skills",
+      "description": "Lorem ipsum — gentle hand and finger activities that help little hands learn to grip, draw, and do.",
+      "cta": "Learn more"
+    },
+    {
+      "size": "small",
+      "icon": "psychology",
+      "title": "Sensory Care",
+      "description": "Lorem ipsum — simple strategies to help children feel calm, focused, and ready to take part in the day.",
+      "cta": "Learn more"
+    },
+    {
+      "size": "medium",
+      "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDy_FFDOPf4u2e5sqc0wt6oOHO9NpPQKyGh7tlZJGdorgt0E_l1zAE04gscyMv2sqotpsIIojvktojaBd1QguDszFfTdrf2Prws9I_n_2d3_72lmwqnYQ6ZQHP0OD2PwDRHXuuqKA-J4JWbXWY65nzOOQbPPOk0NfJSCwH_5ukF6-5gQnTVPWEMqaF0iYwbXxaqsKOUu_cTn9vnO7LYKxpgrTKd24zvg2IMqkHtQxQmiix92OeKx5Iz4g",
+      "imageAlt": "A warm, child-friendly therapy space with toys and soft natural light.",
+      "title": "Everyday Confidence",
+      "description": "Lorem ipsum — turning daily routines into small wins that build a child's confidence at home and school."
+    }
+  ],
+  "visionary": {
+    "eyebrow": "Meet Kerriska",
+    "name": "Kerriska Naidu, OT (Hons)",
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuAMJHlSEKtQs70fnwpjlyZ6np9T64YwBj4ffbD2Kzy2mqdTcidEahz1T2rqSvSwRyGtBd2OMy1oSxMmiwQuYGmQu4dGurxA3oHfRAWhKJKHZyCiIQ1KXveJvi_JivhhBZ7vqg6FeMnS9jD4QK9KMVCFGfPafigy_lyyt7WWXqs0cG4XoanVrE3iAi8jogsO-g9RwjgjThpSaitzve_EkrQ13zUEN-O_2h7fnIw3lycXvabbZjdcoYKhEw",
+    "imageAlt": "A warm professional portrait of Kerriska Naidu, paediatric occupational therapist.",
+    "bio": "I am Kerriska Naidu, an Occupational Therapist who graduated from the University of KwaZulu-Natal with an Honours Degree in Occupational Therapy. I completed my community service in an array of facilities, meeting many people and children from different backgrounds. I thoroughly enjoy paediatric OT and find joy in working with the little hands that hold our future. I strongly believe that each child has the potential to live a fulfilling life, and being able to facilitate the building blocks of their development enables me to serve with joy and enthusiasm.",
+    "quote": "Every child holds the potential for a fulfilling life. I am simply here to help build the blocks that let it grow.",
+    "stats": [
+      { "value": "UKZN", "label": "OT Honours Graduate" },
+      { "value": "Many", "label": "Communities Served" }
     ]
   },
-  "prices": {
-    "starter": "R150",
-    "standard": "R199",
-    "premium": "R350"
+  "steps": [
+    {
+      "number": "01",
+      "icon": "clinical_notes",
+      "title": "Say Hello",
+      "description": "Lorem ipsum — a relaxed first chat to meet you and your child, and to hear what matters most."
+    },
+    {
+      "number": "02",
+      "icon": "architecture",
+      "title": "Plan the Play",
+      "description": "Lorem ipsum — a simple, playful roadmap shaped around your child's strengths and next steps."
+    },
+    {
+      "number": "03",
+      "icon": "model_training",
+      "title": "Therapy Time",
+      "description": "Lorem ipsum — warm 1-on-1 sessions where learning happens through games, movement, and fun."
+    },
+    {
+      "number": "04",
+      "icon": "verified",
+      "title": "Watch It Grow",
+      "description": "Lorem ipsum — gentle check-ins to celebrate progress and keep the momentum going at home."
+    }
+  ],
+  "contact": {
+    "mapImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuBJw9jC5Ha6cl0wIvIbSCRqhVoPhkPVMNEdTSOY3fV_0od5EXuvfNM1X4m8jVo8IXih7cAl9DuVbvx9mKgk9Souvnq5KsFqbL11twJzdS93G6hYr91zChk3Kv-mAznopvCnKEtWAC7YM3ub7XWnfc011EUqLwP66GSCUFDBJhZ3dToM42BZQJmIwWZf0NW0EFS2MwqUrK7cmzWNt6VIxIkSUJFo7IlZioEoWMpLKVVSRqjPHZQo_jZGKA",
+    "mapImageAlt": "A stylized minimalist map of the therapy district rendered in neutral tones and soft teals.",
+    "address": "Lorem ipsum street, Durban, KwaZulu-Natal"
   },
   "footer": {
-    "brand": {
-      "description": "Managed website subscriptions for South African businesses that want a professional online presence without upfront build costs."
-    },
-    "columns": [
-      {
-        "title": "Pricing",
-        "links": [
-          { "label": "Website Plans", "href": "/portfolio/" },
-          { "label": "SEO-Friendly Websites", "href": "/#services" },
-          { "label": "Domain & Hosting", "href": "/#services" },
-          { "label": "Questions & Answers", "href": "/#faq" }
-        ]
-      },
-      {
-        "title": "Company",
-        "links": [
-          { "label": "Mission", "href": "/#mission" },
-          { "label": "Portfolio", "href": "/portfolio/" },
-          { "label": "Contact", "href": "/contact/" }
-        ]
-      },
-      {
-        "title": "Contact",
-        "links": [
-          { "label": "Email", "href": "mailto:pieter@intellify.co.za" },
-          { "label": "WhatsApp", "href": "https://wa.me/27829579336" },
-          { "label": "Contact Form", "href": "/contact/" }
-        ]
-      }
+    "description": "Lorem ipsum — paediatric occupational therapy that meets children where they are and helps them grow.",
+    "services": ["Fine Motor", "Sensory Care", "Play Skills", "Daily Living"],
+    "company": [
+      { "label": "Our Approach", "to": "/" },
+      { "label": "Research & Outcomes", "to": "/portfolio" },
+      { "label": "Contact Me", "to": "/contact" },
+      { "label": "Privacy Policy", "to": "/privacy" }
     ],
-    "links": [{ "label": "Privacy Policy", "href": "/privacy-policy/" }]
-  },
-  "hero": {
-    "show": true,
-    "subtitle": null,
-    "title": "Go Online. Grow Online.",
-    "title_line_1_prefix": "Go",
-    "title_line_1_highlight": "Online.",
-    "title_line_2_prefix": "Grow",
-    "title_line_2_highlight": "Online.",
-    "body": "A professional website works for you 24/7 - generating leads, building trust, and turning browsers into paying customers. Your competitors are already online.",
-    "button_text": "Get Your Site Today",
-    "button_link": "/contact/",
-    "marquee_row1": [
-      "24/7 Availability",
-      "Lead Generation",
-      "SEO Optimized",
-      "Mobile-Friendly",
-      "Google Ranking",
-      "Custom Design",
-      "Competitive Advantage",
-      "Local Search"
-    ],
-    "marquee_row2": [
-      "Trust & Credibility",
-      "Brand Exposure",
-      "Social Media",
-      "Email Marketing",
-      "Booking Forms",
-      "Testimonials",
-      "Digital Investment",
-      "Sales Growth"
-    ]
-  },
-  "mission": {
-    "show": true,
-    "title": "Our Mission",
-    "subtitle": " all in one solution",
-    "highlight": "Grow faster with our",
-    "paragraphs": [
-      "Welcome to Intellify! We understand that starting a website can be overwhelming, from setting up a domain to managing the high capital expenses associated with it. That's where we step in to make the process easy and hassle-free.",
-      "Our primary mission is to empower small and medium-sized service-based businesses by providing a seamless introduction to the online world. We believe that building trust and a strong online presence are crucial for fostering growth and success.",
-      "With our services, we cater to your specific needs. Set yourself apart using our affordable subscription model, which eliminates the heavy upfront costs of website setup and maintenance.",
-      "Let Intellify help you on this exciting journey. Together, we'll unlock your business's full potential and start elevating your brand matter. Unlock the power of an online profile now!"
-    ],
-    "features": [
-      { "label": "Easy Onboarding" },
-      { "label": "Business Growth" },
-      { "label": "Affordable Plans" },
-      { "label": "Full Potential" }
-    ]
-  },
-  "offerings": {
-    "show": true,
-    "kicker": "Pricing",
-    "title": "Monthly website plans with no upfront build cost.",
-    "subtitle": "Choose a managed website subscription that fits where your business is right now.",
-    "button_link": "/contact/",
-    "plans": [
-      {
-        "name": "Starter",
-        "badge": "Get online",
-        "price_prefix": "From",
-        "price_key": "starter",
-        "price_suffix": "/mo",
-        "description": "A lean single-page website for businesses that need to get online quickly without a large upfront expense.",
-        "cta": "Start Small",
-        "features": [
-          "Single page website",
-          "Custom navigation bar and branded logo placement",
-          "Simple hero and services",
-          "Testimonials and about us",
-          "Contact links",
-          "Domain registration and annual renewal included (worth R150/year)",
-          "Monthly hosting included (worth R100/month)"
-        ]
-      },
-      {
-        "name": "Standard",
-        "badge": "Best fit",
-        "featured": true,
-        "price_prefix": "From",
-        "price_key": "standard",
-        "price_suffix": "/mo",
-        "description": "A fuller multi-page website with stronger content, enquiry capture, and monthly changes included.",
-        "cta": "Choose Standard",
-        "features": [
-          "Everything in Starter",
-          "Multiple pages",
-          "Custom navigation bar and branded logo placement",
-          "Elaborate hero and services",
-          "Image carousel or rotating gallery",
-          "Testimonials and about us",
-          "Contact form",
-          "Team section",
-          "Footer",
-          "2 changes per month",
-          "Domain registration and annual renewal included (worth R150/year)",
-          "Monthly hosting included (worth R100/month)"
-        ]
-      },
-      {
-        "name": "Premium",
-        "badge": "Scale up",
-        "price_prefix": "From",
-        "price_key": "premium",
-        "price_suffix": "/mo",
-        "description": "A premium managed site for businesses that want rich media, regular improvements, and analytics.",
-        "cta": "Go Premium",
-        "features": [
-          "Everything in Standard",
-          "Multi-page structure",
-          "SEO optimized build",
-          "Embedded video section",
-          "Image carousel or rotating gallery",
-          "Contact form and team",
-          "3 changes per month",
-          "Site analytics",
-          "Domain registration and annual renewal included (worth R150/year)",
-          "Monthly hosting included (worth R100/month)"
-        ]
-      }
-    ]
-  },
-  "portfolio": {
-    "show": true,
-    "title": "Some of our websites",
-    "subtitle": "Take a look at some of the beautiful, high-performing websites we've built for our clients.",
-    "visit_label": "Visit Site",
-    "sites": [
-      {
-        "title": "Poolware and Service",
-        "url": "https://www.poolwareandservice.co.za"
-      },
-      {
-        "title": "Homeloans and Bonds",
-        "url": "https://www.homeloansandbonds.co.za"
-      },
-      { "title": "Evo Ultimate", "url": "https://www.evoultimate.co.za" },
-      { "title": "Bond Squad", "url": "https://www.bondsquad.co.za" },
-      { "title": "Mzansi Bonds", "url": "https://www.mzansibonds.co.za/" },
-      { "title": "Apex Leadership", "url": "https://www.apexleadership.co.za" },
-      {
-        "title": "Blue Key Home Finance",
-        "url": "https://www.bluekeyhomefinance.co.za"
-      },
-      {
-        "title": "First Class Finance SA",
-        "url": "https://www.firstclassfinancesa.co.za"
-      },
-      { "title": "VM Home Loans", "url": "https://www.vmhomeloans.co.za" },
-      {
-        "title": "Apex Leadership Next",
-        "url": "https://apex-leadership-next.vercel.app"
-      },
-      { "title": "Ceyoni Physio", "url": "https://phys-ceyo.vercel.app" },
-      { "title": "The Bond Studio", "url": "https://www.thebondstudio.co.za" },
-      {
-        "title": "Captivating Places",
-        "url": "https://www.captivatingplaces.co.za"
-      },
-      { "title": "Intellify", "url": "https://www.intellify.co.za" }
-    ]
-  },
-  "faq": {
-    "show": true,
-    "kicker": "Common Questions",
-    "title": "Website subscriptions, without the guesswork.",
-    "subtitle": "Clear answers for South African businesses comparing website costs, timelines, hosting, and SEO support.",
-    "items": [
-      {
-        "question": "How much does a business website cost in South Africa?",
-        "answer": "Intellify offers managed website subscriptions from R150 per month with no upfront build cost. Traditional business websites often require a large once-off build fee before hosting, domain renewal, updates, and support are added."
-      },
-      {
-        "question": "What is included in your monthly website plans?",
-        "answer": "Every plan includes domain registration, annual domain renewal worth R150, monthly hosting worth R100, custom website design, mobile-friendly pages, and ongoing technical support. Higher plans add features such as contact forms, monthly content changes, embedded video, SEO-focused build work, and analytics."
-      },
-      {
-        "question": "How long does it take to get my website live?",
-        "answer": "Most small business websites can be planned, built, and launched within two to three weeks once the core content is ready. The exact timeline depends on the number of pages, features, and how quickly final copy, images, and approvals are provided."
-      },
-      {
-        "question": "Do you build websites with SEO in mind?",
-        "answer": "Yes. Intellify websites are built to be fast, mobile-friendly, easy to crawl, and structured around the services and locations your customers search for. Premium plans include additional SEO support and analytics so you can understand how visitors find and use your site."
-      }
-    ]
-  },
-  "portfolio_page": {
-    "header": {
-      "title_prefix": "Go online with ",
-      "title_highlight": "no capital outlay.",
-      "description": "Every Intellify site is built on a simple monthly subscription, so your business can get online without large upfront fees, technical stress, or surprise hosting costs."
-    },
-    "plan": {
-      "badge": "Managed Website Subscription",
-      "price_prefix": "From",
-      "price_key": "starter",
-      "price_suffix": "/ month",
-      "usp_title": "No Capital Outlay",
-      "usp_description_prefix": "Skip the traditional ",
-      "usp_description_strikethrough": "~R5,000 to R15,000",
-      "usp_description_suffix": " upfront cost.",
-      "description": "Choose the package that fits where your business is today. We carry the build and hosting risk, while you get the benefit of being online for a predictable monthly fee.",
-      "button_text": "Start Your Website",
-      "button_link": "/contact/"
-    },
-    "tiers_header": "Choose your monthly website plan:",
-    "tiers": [
-      {
-        "name": "Starter",
-        "badge": "Get online",
-        "price_key": "starter",
-        "suffix": "/ month",
-        "description": "A lean single-page website for businesses that need a professional online presence quickly and affordably.",
-        "features": [
-          "Single page website",
-          "Custom navigation bar and branded logo placement",
-          "Simple hero section",
-          "Services section",
-          "Testimonials section",
-          "About us section",
-          "Contact links without form integration",
-          "Footer"
-        ]
-      },
-      {
-        "name": "Standard",
-        "badge": "Best fit",
-        "price_key": "standard",
-        "suffix": "/ month",
-        "description": "A fuller multi-page site for businesses ready to look more established and capture enquiries through a contact form.",
-        "features": [
-          "Everything in Starter",
-          "Multiple pages",
-          "Custom navigation bar and branded logo placement",
-          "Elaborate hero section",
-          "Services section",
-          "Image carousel or rotating gallery",
-          "Testimonials section",
-          "About us section",
-          "Contact form",
-          "Team section",
-          "Footer",
-          "2 content changes per month"
-        ]
-      },
-      {
-        "name": "Premium",
-        "badge": "Scale up",
-        "price_key": "premium",
-        "suffix": "/ month",
-        "description": "A premium managed website with room to grow, rich media, monthly improvements, and analytics so you can understand your visitors.",
-        "features": [
-          "Everything in Standard",
-          "Multiple pages",
-          "Custom navigation bar and branded logo placement",
-          "Elaborate hero section",
-          "Services section",
-          "Image carousel or rotating gallery",
-          "Embedded video section",
-          "Testimonials section",
-          "About us section",
-          "Contact form",
-          "Team section",
-          "Footer",
-          "3 content changes per month",
-          "Site analytics"
-        ]
-      }
-    ],
-    "features_header": "Included with every monthly subscription:",
-    "features": [
-      {
-        "title": "No upfront costs",
-        "description": "We understand that building a website can be overwhelming and a huge capital expense. We have you covered. With NO upfront fees or lump sums you can go online at a low monthly cost. We carry the risk, you carry the benefit."
-      },
-      {
-        "title": "Domain registration included",
-        "description": "Your online journey starts with a domain name. Domain registration and the annual domain renewal, worth R150 per year, are included in your monthly fee."
-      },
-      {
-        "title": "Fully Cloud-Managed & Secure",
-        "description": "We handle all the technical heavy lifting - from state-of-the-art cloud hosting to complete codebase management and seamless feature updates. You get enterprise-grade reliability without needing an IT degree."
-      },
-      {
-        "title": "Monthly hosting costs included",
-        "description": "Hosting is the rent you pay for your website to live on a server, and it can cost around R100 per month on its own. With Intellify, that monthly hosting value is fully included."
-      },
-      {
-        "title": "Lean, custom-coded websites",
-        "description": "Every site is coded from the ground up to stay lean, fast, SEO optimized, and ready to scale as your business grows."
-      }
-    ],
-    "quote": {
-      "text": "\"Your website should start simple, work hard from day one, and grow with your business month by month.\"",
-      "author": "Intellify Philosophy"
-    }
-  },
-  "contact": {
-    "eyebrow": "Get in touch",
-    "title_prefix": "Contact",
-    "title_highlight": "Us",
-    "intro": "Have a question or ready to get started? Send us a message and we'll get back to you.",
-    "fields": {
-      "name": "Name",
-      "email": "Email Address",
-      "phone": "Phone Number",
-      "message": "Message",
-      "location": "Location"
-    },
-    "submit": "Send Message",
-    "sending": "Sending your message...",
-    "sent": "Message sent. Thank you, we'll be in touch soon.",
-    "error_prefix": "Something went wrong. Please email"
-  },
-  "privacy": {
-    "title": "Privacy Policy",
-    "intro": "This Privacy Policy describes how your personal information is collected, used, and shared when you visit Intellify.",
-    "sections": [
-      {
-        "heading": "Personal Information We Collect",
-        "body": "We do not collect any data about you or use any cookies."
-      },
-      {
-        "heading": "Changes",
-        "body": "We may update this privacy policy from time to time for personal, operational, legal, or regulatory reasons."
-      },
-      {
-        "heading": "Contact Us",
-        "body": "For more information about our privacy practices or if you have questions, please contact us by email at"
-      }
-    ]
+    "copyright": "© 2024 Kerriska Naidu. All rights reserved. Building the little blocks of a fulfilling life."
   }
 }

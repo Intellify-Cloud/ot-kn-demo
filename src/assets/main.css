@@ -1,22 +1,3 @@
-@import './base.css';
-@import './theme.css';
-
-@theme {
-  --color-action-surface: var(--shell-color-ink);
-  --color-action-surface-hover: color-mix(in srgb, var(--shell-color-ink) 86%, white);
-  --color-action-surface-muted: var(--shell-color-muted);
-  --color-action-fg: var(--shell-color-surface);
-  --color-fg: var(--shell-color-ink);
-  --color-fg-muted: var(--shell-color-muted);
-  --color-fg-soft: var(--shell-color-subtle);
-  --color-primary: var(--shell-color-accent);
-  --color-primary-hover: color-mix(in srgb, var(--shell-color-accent) 86%, black);
-  --color-primary-muted: var(--shell-color-accent-soft);
-  --color-shadow: transparent;
-  --color-stroke: var(--shell-color-hairline);
-  --color-stroke-muted: var(--shell-color-hairline);
-  --color-stroke-soft: color-mix(in srgb, var(--shell-color-hairline) 55%, transparent);
-  --color-surface: var(--shell-color-canvas);
-  --color-surface-muted: var(--shell-color-surface-muted);
-  --color-surface-soft: var(--shell-color-surface);
-}
+@import "./base.css";
+@import "./theme.css";
+@tailwind utilities;

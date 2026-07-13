@@ -1,64 +1,36 @@
 <script setup lang="ts">
-  import type { SectionData } from '@/content/siteText'
-
-  defineProps<{
-    data: SectionData<'steps'>
-  }>()
+import siteData from "../../assets/site.json";
+import { siteText } from "../../content/siteText";
 </script>
 
 <template>
-  <section id="steps" class="steps-section shell-section" aria-labelledby="steps-title">
-    <div class="shell-container">
-      <p class="shell-eyebrow">{{ data.eyebrow }}</p>
-      <h2 id="steps-title" class="shell-heading">{{ data.title }}</h2>
+  <section v-reveal class="mx-auto max-w-container-max overflow-hidden px-margin-mobile py-stack-lg md:px-margin-desktop">
+    <div class="mb-20 text-center">
+      <h2 class="mb-4 font-headline-lg text-headline-lg text-primary">{{ siteText.steps.heading }}</h2>
+      <p class="mx-auto max-w-2xl font-body-md text-body-md text-on-surface-variant">{{ siteText.steps.body }}</p>
+    </div>
 
-      <div class="steps-section__grid">
-        <article
-          v-for="(item, index) in data.items"
-          :key="item.title"
-          class="steps-section__card shell-card"
+    <div class="relative">
+      <div class="absolute left-0 top-1/2 hidden h-0.5 w-full -translate-y-1/2 bg-outline-variant/30 md:block"></div>
+
+      <div class="relative z-10 grid grid-cols-1 gap-gutter md:grid-cols-4">
+        <div
+          v-for="step in siteData.steps"
+          :key="step.number"
+          class="group rounded-xl border brass-border bg-surface p-8 text-center shadow-soft transition-transform hover:-translate-y-2"
         >
-          <span class="steps-section__number">{{ String(index + 1).padStart(2, '0') }}</span>
-          <h3>{{ item.title }}</h3>
-          <p>{{ item.body }}</p>
-        </article>
+          <div
+            class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-outline-variant bg-surface-container transition-colors group-hover:border-secondary"
+          >
+            <span class="material-symbols-outlined text-primary group-hover:text-secondary">{{ step.icon }}</span>
+          </div>
+          <span class="mb-2 block font-bold font-label-md text-label-md text-secondary">
+            {{ siteText.steps.label.toUpperCase() }} {{ step.number }}
+          </span>
+          <h4 class="mb-2 font-headline-md text-headline-md text-primary">{{ step.title }}</h4>
+          <p class="font-body-sm text-body-sm text-on-surface-variant">{{ step.description }}</p>
+        </div>
       </div>
     </div>
   </section>
 </template>
-
-<style scoped>
-  .steps-section__grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--shell-space-4);
-    margin-top: var(--shell-space-10);
-  }
-
-  .steps-section__card {
-    padding: var(--shell-space-6);
-  }
-
-  .steps-section__number {
-    color: var(--shell-color-accent);
-    font-size: 0.875rem;
-    font-weight: 800;
-  }
-
-  .steps-section__card h3 {
-    margin: var(--shell-space-5) 0 var(--shell-space-3);
-    font-size: 1.375rem;
-  }
-
-  .steps-section__card p {
-    margin: 0;
-    color: var(--shell-color-muted);
-    line-height: 1.65;
-  }
-
-  @media (max-width: 860px) {
-    .steps-section__grid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>

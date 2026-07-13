@@ -1,124 +1,79 @@
 <script setup lang="ts">
-  import { computed } from 'vue'
-  import { siteText, type SectionData } from '@/content/siteText'
-  import { useHead } from '@unhead/vue'
-
-  const props = defineProps<{
-    data: SectionData<'footer'>
-  }>()
-
-  const jsonLd = computed(() =>
-    JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'Organization',
-      name: siteText.site.name,
-      url: siteText.site.url,
-      description: siteText.site.description,
-    }),
-  )
-
-  useHead({
-    script: [
-      {
-        type: 'application/ld+json',
-        textContent: jsonLd,
-      },
-    ],
-  })
+import { RouterLink } from "vue-router";
+import siteData from "../../assets/site.json";
+import { siteText } from "../../content/siteText";
 </script>
 
 <template>
-  <footer class="site-footer" aria-label="Footer">
-    <div class="site-footer__inner shell-container">
-      <div>
-        <a class="site-footer__brand" href="#hero">{{ siteText.site.name }}</a>
-        <p>{{ props.data.brand }}</p>
+  <footer class="mt-stack-lg rounded-t-xl border-t border-outline-variant/20 bg-surface-container">
+    <div class="mx-auto grid max-w-container-max grid-cols-1 gap-gutter px-margin-mobile py-stack-lg md:grid-cols-4 md:px-margin-desktop">
+      <div class="flex flex-col gap-4">
+        <div class="font-headline-md text-headline-md font-bold text-primary">{{ siteData.brand.name }}</div>
+        <p class="font-body-sm text-body-sm leading-relaxed text-on-surface-variant">
+          {{ siteData.footer.description }}
+        </p>
       </div>
 
-      <div class="site-footer__columns">
-        <div v-for="column in props.data.columns" :key="column.title" class="site-footer__column">
-          <h2>{{ column.title }}</h2>
-          <a v-for="link in column.links" :key="link.href" :href="link.href">
-            {{ link.label }}
+      <div class="flex flex-col gap-3">
+        <h5 class="mb-2 font-bold font-label-md text-label-md uppercase text-primary">
+          {{ siteText.footer.servicesHeading }}
+        </h5>
+        <a
+          v-for="service in siteData.footer.services"
+          :key="service"
+          href="#services"
+          class="text-body-sm text-on-surface-variant transition-colors hover:text-on-surface"
+        >
+          {{ service }}
+        </a>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h5 class="mb-2 font-bold font-label-md text-label-md uppercase text-primary">
+          {{ siteText.footer.companyHeading }}
+        </h5>
+        <RouterLink
+          v-for="link in siteData.footer.company"
+          :key="link.label"
+          :to="link.to"
+          class="text-body-sm text-on-surface-variant transition-colors hover:text-on-surface"
+        >
+          {{ link.label }}
+        </RouterLink>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <h5 class="font-bold font-label-md text-label-md uppercase text-primary">
+          {{ siteText.footer.newsletterHeading }}
+        </h5>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">{{ siteText.footer.newsletterBody }}</p>
+        <form class="relative" @submit.prevent>
+          <input
+            type="email"
+            :placeholder="siteText.footer.newsletterPlaceholder"
+            class="w-full rounded-full border border-outline-variant/50 bg-surface px-4 py-2 text-body-sm outline-none focus:border-primary focus:ring-0"
+          />
+          <button
+            type="submit"
+            class="absolute bottom-1 right-1 top-1 rounded-full bg-primary px-4 text-on-primary transition-transform active:scale-95"
+            aria-label="Subscribe"
+          >
+            <span class="material-symbols-outlined text-[18px]">send</span>
+          </button>
+        </form>
+        <div class="mt-2 flex gap-4">
+          <a href="#" class="text-on-surface-variant transition-colors hover:text-secondary">
+            <span class="material-symbols-outlined">public</span>
+          </a>
+          <a href="#" class="text-on-surface-variant transition-colors hover:text-secondary">
+            <span class="material-symbols-outlined">share</span>
           </a>
         </div>
       </div>
     </div>
 
-    <div class="site-footer__bottom shell-container">
-      <small>&copy; {{ new Date().getFullYear() }} {{ siteText.site.name }}</small>
-      <div>
-        <a v-for="link in props.data.legalLinks" :key="link.href" :href="link.href">
-          {{ link.label }}
-        </a>
-      </div>
+    <div class="border-t border-outline-variant/10 px-margin-mobile py-6 text-center font-label-md text-label-md text-on-surface-variant/60 md:px-margin-desktop">
+      {{ siteData.footer.copyright }}
     </div>
   </footer>
 </template>
-
-<style scoped>
-  .site-footer {
-    border-top: 1px solid var(--shell-color-hairline);
-    padding-block: var(--shell-space-16) var(--shell-space-8);
-  }
-
-  .site-footer__inner {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.8fr);
-    gap: var(--shell-space-12);
-  }
-
-  .site-footer__brand {
-    font-size: 1.125rem;
-    font-weight: 800;
-  }
-
-  .site-footer p {
-    max-width: 32rem;
-    margin: var(--shell-space-4) 0 0;
-    color: var(--shell-color-muted);
-    line-height: 1.65;
-  }
-
-  .site-footer__columns {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--shell-space-8);
-  }
-
-  .site-footer__column {
-    display: grid;
-    align-content: start;
-    gap: var(--shell-space-3);
-  }
-
-  .site-footer__column h2 {
-    margin: 0;
-    font-size: 0.875rem;
-  }
-
-  .site-footer__column a,
-  .site-footer__bottom {
-    color: var(--shell-color-muted);
-  }
-
-  .site-footer__bottom {
-    display: flex;
-    justify-content: space-between;
-    gap: var(--shell-space-4);
-    margin-top: var(--shell-space-12);
-    padding-top: var(--shell-space-6);
-    border-top: 1px solid var(--shell-color-hairline);
-  }
-
-  @media (max-width: 760px) {
-    .site-footer__inner,
-    .site-footer__columns {
-      grid-template-columns: 1fr;
-    }
-
-    .site-footer__bottom {
-      flex-direction: column;
-    }
-  }
-</style>

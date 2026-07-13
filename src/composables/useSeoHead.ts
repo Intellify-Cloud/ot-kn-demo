@@ -1,42 +1,46 @@
-import { siteText } from '@/content/siteText'
+import { watch } from "vue";
+import { useRoute } from "vue-router";
+import { siteText } from "../content/siteText";
 
-interface SeoHeadOptions {
-  title?: string
-  description?: string
-  path?: string
+const pageMeta: Record<string, { title: string; description: string }> = {
+  home: {
+    title: siteText.meta.title,
+    description: siteText.meta.description,
+  },
+  portfolio: {
+    title: `${siteText.pages.portfolio.title} | Kerriska Naidu`,
+    description: siteText.pages.portfolio.body,
+  },
+  contact: {
+    title: `${siteText.pages.contact.title} | Kerriska Naidu`,
+    description: siteText.pages.contact.body,
+  },
+  privacy: {
+    title: `${siteText.pages.privacy.title} | Kerriska Naidu`,
+    description: siteText.pages.privacy.body,
+  },
+};
+
+function setMetaDescription(content: string) {
+  let tag = document.querySelector('meta[name="description"]');
+  if (!tag) {
+    tag = document.createElement("meta");
+    tag.setAttribute("name", "description");
+    document.head.appendChild(tag);
+  }
+  tag.setAttribute("content", content);
 }
 
-export function useSeoHead({ title, description, path }: SeoHeadOptions = {}) {
-  const siteTitle = siteText.site.name
-  const siteOrigin = siteText.site.url
-  const fullTitle = title ? `${title} | ${siteTitle}` : siteTitle
-  const canonicalUrl = `${siteOrigin}${path || '/'}`
+export function useSeoHead() {
+  const route = useRoute();
 
-  document.title = fullTitle
-
-  const setMeta = (selector: string, value: string) => {
-    let el = document.querySelector(selector)
-    if (!el) {
-      el = document.createElement('meta')
-      const [attr, val] = selector.replace(/[\[\]']/g, '').split('=')
-      el.setAttribute(attr ?? '', val ?? '')
-      document.head.appendChild(el)
-    }
-    el.setAttribute('content', value)
-  }
-
-  setMeta(`[name='description']`, description || '')
-  setMeta(`[property='og:title']`, fullTitle)
-  setMeta(`[property='og:description']`, description || '')
-  setMeta(`[property='og:url']`, canonicalUrl)
-  setMeta(`[property='og:type']`, 'website')
-  setMeta(`[property='og:image']`, `${siteOrigin}${siteText.site.ogImage}`)
-
-  let canonical = document.querySelector(`link[rel='canonical']`)
-  if (!canonical) {
-    canonical = document.createElement('link')
-    canonical.setAttribute('rel', 'canonical')
-    document.head.appendChild(canonical)
-  }
-  canonical.setAttribute('href', canonicalUrl)
+  watch(
+    () => route.name,
+    (name) => {
+      const meta = pageMeta[String(name)] ?? pageMeta.home;
+      document.title = meta.title;
+      setMetaDescription(meta.description);
+    },
+    { immediate: true }
+  );
 }

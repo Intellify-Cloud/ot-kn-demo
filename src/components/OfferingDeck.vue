@@ -1,88 +1,78 @@
-<template>
-  <section
-    v-if="site.offerings.show"
-    id="services"
-    class="py-16 md:py-24 lg:py-32"
-    aria-labelledby="services-heading"
-  >
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl mx-auto text-center mb-12 md:mb-16">
-        <p class="text-sm font-extrabold uppercase tracking-widest text-primary mb-3">
-          {{ site.offerings.kicker }}
-        </p>
-        <h2
-          id="services-heading"
-          class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4"
-        >
-          {{ site.offerings.title }}
-        </h2>
-        <p class="text-lg">
-          {{ site.offerings.subtitle }}
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-        <article
-          v-for="plan in site.offerings.plans"
-          :key="plan.name"
-          class="relative rounded-2xl border p-8 flex flex-col h-full"
-          :class="
-            plan.featured
-              ? 'border-primary bg-surface-muted shadow-xl scale-100 md:scale-105 ring-1 ring-primary'
-              : 'border-stroke bg-surface-soft shadow-sm'
-          "
-        >
-          <div
-            v-if="plan.badge"
-            class="absolute -top-3 left-8 rounded-full px-3 py-1 text-xs font-semibold text-action-fg"
-            :class="plan.featured ? 'bg-primary' : 'bg-action-surface'"
-          >
-            {{ plan.badge }}
-          </div>
-
-          <h3 class="text-xl font-semibold mt-2 mb-2">{{ plan.name }} Website Plan</h3>
-          <p class="mb-6">
-            {{ plan.description }}
-          </p>
-
-          <div class="flex items-baseline gap-1 mb-6">
-            <span class="text-sm">{{ plan.price_prefix }}</span>
-            <strong class="text-4xl font-bold">
-              {{ getPrice(plan.price_key) }}
-            </strong>
-            <span class="text-sm">{{ plan.price_suffix }}</span>
-          </div>
-
-          <ul class="space-y-3 mb-8 flex-1">
-            <li
-              v-for="feature in plan.features"
-              :key="feature"
-              class="flex items-start gap-2 text-sm text-fg-muted"
-            >
-              <span class="text-primary mt-0.5" aria-hidden="true">&#10003;</span>
-              <span>{{ feature }}</span>
-            </li>
-          </ul>
-
-          <a
-            :href="site.offerings.button_link"
-            class="text-action-fg inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition-colors"
-            :class="
-              plan.featured
-                ? 'bg-primary hover:bg-primary-hover'
-                : 'bg-action-surface hover:bg-action-surface-hover'
-            "
-          >
-            {{ plan.cta }} <span aria-hidden="true">&rarr;</span>
-          </a>
-        </article>
-      </div>
-    </div>
-  </section>
-</template>
-
 <script setup lang="ts">
-  import site from '@/assets/site.json'
+export interface Discipline {
+  size: "large" | "small" | "medium";
+  image?: string;
+  imageAlt?: string;
+  icon?: string;
+  eyebrow?: string;
+  title: string;
+  description: string;
+  cta?: string;
+}
 
-  const getPrice = (key: string) => site.prices[key as keyof typeof site.prices]
+defineProps<{ items: Discipline[] }>();
 </script>
+
+<template>
+  <div class="grid grid-cols-1 gap-gutter md:grid-cols-12">
+    <template v-for="item in items" :key="item.title">
+      <!-- Large image card -->
+      <div
+        v-if="item.size === 'large'"
+        class="group relative h-[400px] overflow-hidden rounded-xl border brass-border shadow-soft bg-surface md:col-span-8"
+      >
+        <div
+          class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+          :style="{ backgroundImage: `url('${item.image}')` }"
+          role="img"
+          :aria-label="item.imageAlt"
+        ></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+        <div class="absolute bottom-0 p-10 text-white">
+          <span
+            v-if="item.eyebrow"
+            class="mb-4 inline-block rounded-full bg-secondary px-3 py-1 font-label-md text-label-md uppercase tracking-widest text-on-secondary"
+          >
+            {{ item.eyebrow }}
+          </span>
+          <h3 class="mb-2 font-headline-lg text-headline-lg">{{ item.title }}</h3>
+          <p class="max-w-md font-body-md text-body-md opacity-90">{{ item.description }}</p>
+        </div>
+      </div>
+
+      <!-- Small text card -->
+      <div
+        v-else-if="item.size === 'small'"
+        class="flex flex-col justify-between rounded-xl border brass-border bg-surface-container-high p-8 shadow-soft md:col-span-4"
+      >
+        <div>
+          <span class="material-symbols-outlined mb-6 text-4xl text-secondary">{{ item.icon }}</span>
+          <h3 class="mb-4 font-headline-md text-headline-md text-primary">{{ item.title }}</h3>
+          <p class="font-body-sm text-body-sm leading-relaxed text-on-surface-variant">{{ item.description }}</p>
+        </div>
+        <a href="#" class="group flex items-center gap-2 font-label-md text-label-md font-bold text-secondary">
+          {{ item.cta?.toUpperCase() }}
+          <span class="material-symbols-outlined transition-transform group-hover:translate-x-2">arrow_forward</span>
+        </a>
+      </div>
+
+      <!-- Medium image card -->
+      <div
+        v-else
+        class="group relative h-[350px] overflow-hidden rounded-xl border brass-border shadow-soft bg-surface md:col-span-8"
+      >
+        <div
+          class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+          :style="{ backgroundImage: `url('${item.image}')` }"
+          role="img"
+          :aria-label="item.imageAlt"
+        ></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/60 to-transparent"></div>
+        <div class="absolute inset-y-0 left-0 flex max-w-sm flex-col justify-center p-10 text-white">
+          <h3 class="mb-2 font-headline-lg text-headline-lg">{{ item.title }}</h3>
+          <p class="font-body-md text-body-md opacity-90">{{ item.description }}</p>
+        </div>
+      </div>
+    </template>
+  </div>
+</template>

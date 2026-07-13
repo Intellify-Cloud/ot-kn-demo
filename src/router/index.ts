@@ -1,65 +1,34 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import { useSeoHead } from '@/composables/useSeoHead'
-import { nextTick } from 'vue'
-import { siteText } from '@/content/siteText'
+import { createRouter, createWebHistory } from "vue-router";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
+  scrollBehavior(to, _from, savedPosition) {
+    if (savedPosition) return savedPosition;
+    if (to.hash) return { el: to.hash, behavior: "smooth" };
+    return { top: 0 };
+  },
   routes: [
     {
-      path: '/',
-      component: () => import('@/views/HomeView.vue'),
-      meta: {
-        title: 'Home',
-        description: siteText.site.description,
-      },
+      path: "/",
+      name: "home",
+      component: () => import("../views/HomeView.vue"),
     },
     {
-      path: '/portfolio/',
-      component: () => import('@/views/PortfolioView.vue'),
-      meta: {
-        title: 'Portfolio',
-        description: 'Placeholder portfolio route for future template sites.',
-      },
+      path: "/portfolio",
+      name: "portfolio",
+      component: () => import("../views/PortfolioView.vue"),
     },
     {
-      path: '/contact',
-      component: () => import('@/views/ContactView.vue'),
-      meta: {
-        title: 'Contact',
-        description: 'Placeholder contact route for future template sites.',
-      },
+      path: "/contact",
+      name: "contact",
+      component: () => import("../views/ContactView.vue"),
     },
     {
-      path: '/privacy-policy/',
-      component: () => import('@/views/PrivacyView.vue'),
-      meta: {
-        title: 'Privacy Policy',
-        description: `Privacy policy for ${siteText.site.name}.`,
-      },
+      path: "/privacy",
+      name: "privacy",
+      component: () => import("../views/PrivacyView.vue"),
     },
   ],
-  scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) return savedPosition
+});
 
-    if (to.hash) {
-      return new Promise((resolve) => {
-        nextTick(() => {
-          resolve({ el: to.hash, behavior: 'smooth' })
-        })
-      })
-    }
-
-    return { top: 0 }
-  },
-})
-
-router.afterEach((to) => {
-  useSeoHead({
-    title: to.meta.title as string,
-    description: to.meta.description as string,
-    path: to.path,
-  })
-})
-
-export default router
+export default router;
