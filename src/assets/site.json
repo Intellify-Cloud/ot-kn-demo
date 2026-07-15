@@ -1,7 +1,8 @@
 {
   "brand": {
     "name": "Kerriska Naidu",
-    "tagline": "Little Hands, Big Futures"
+    "tagline": "Little Hands, Big Futures",
+    "logo": "/images/logo/logo.png"
   },
   "nav": [
     { "label": "Services", "href": "#services" },
