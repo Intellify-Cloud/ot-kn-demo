@@ -2,6 +2,7 @@
 export interface Discipline {
   size: "large" | "small" | "medium";
   image?: string;
+  video?: string;
   imageAlt?: string;
   icon?: string;
   eyebrow?: string;
@@ -22,12 +23,13 @@ defineProps<{ items: Discipline[] }>();
         class="group relative h-[400px] overflow-hidden rounded-xl border brass-border shadow-soft bg-surface md:col-span-8"
       >
         <div
-          class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+          class="zoom-bg absolute inset-0 bg-cover bg-center"
           :style="{ backgroundImage: `url('${item.image}')` }"
           role="img"
           :aria-label="item.imageAlt"
         ></div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+        <div class="shimmer pointer-events-none absolute inset-0"></div>
         <div class="absolute bottom-0 p-10 text-white">
           <span
             v-if="item.eyebrow"
@@ -61,13 +63,27 @@ defineProps<{ items: Discipline[] }>();
         v-else
         class="group relative h-[350px] overflow-hidden rounded-xl border brass-border shadow-soft bg-surface md:col-span-8"
       >
+        <video
+          v-if="item.video"
+          class="zoom-bg absolute inset-0 h-full w-full object-cover object-center"
+          :poster="item.image"
+          :aria-label="item.imageAlt"
+          autoplay
+          muted
+          loop
+          playsinline
+        >
+          <source :src="item.video" type="video/mp4" />
+        </video>
         <div
-          class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+          v-else
+          class="zoom-bg absolute inset-0 bg-cover bg-center"
           :style="{ backgroundImage: `url('${item.image}')` }"
           role="img"
           :aria-label="item.imageAlt"
         ></div>
         <div class="absolute inset-0 bg-gradient-to-r from-primary/60 to-transparent"></div>
+        <div class="shimmer pointer-events-none absolute inset-0"></div>
         <div class="absolute inset-y-0 left-0 flex max-w-sm flex-col justify-center p-10 text-white">
           <h3 class="mb-2 font-headline-lg text-headline-lg">{{ item.title }}</h3>
           <p class="font-body-md text-body-md opacity-90">{{ item.description }}</p>
@@ -76,3 +92,53 @@ defineProps<{ items: Discipline[] }>();
     </template>
   </div>
 </template>
+
+<style scoped>
+/* Very slight, slow zoom on hover */
+.zoom-bg {
+  transition: transform 4000ms ease-out;
+  will-change: transform;
+}
+
+.group:hover .zoom-bg {
+  transform: scale(1.04);
+}
+
+/* Diagonal light sweep on hover */
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.55) 50%,
+    transparent 70%
+  );
+  transform: translateX(-150%);
+}
+
+.group:hover .shimmer::after {
+  animation: shimmer 1.6s ease-out;
+}
+
+@keyframes shimmer {
+  from {
+    transform: translateX(-150%);
+  }
+  to {
+    transform: translateX(150%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .group:hover .shimmer::after {
+    animation: none;
+  }
+  .zoom-bg,
+  .group:hover .zoom-bg {
+    transition: none;
+    transform: none;
+  }
+}
+</style>

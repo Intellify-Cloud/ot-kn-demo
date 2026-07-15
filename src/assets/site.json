@@ -15,8 +15,8 @@
   "disciplines": [
     {
       "size": "large",
-      "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuCVgV6CGNopZt99T3kzGqfi5Zt--J0Rw_x-9IFSaE_6AUV0bKVMSFVsW1YS6KT_nzyDtcxVkwDTywpKtph_f0H3d6_0wZXHmu2YUVFNTlTNJMjcUNtd_LiDUswjOxS4tbZQGrziHPLa2AStUrTNR6wgNdW2ZGj_hx43dLB7oVk9HYDhXhrua1zQ8Wskj2ledKbJYOgehwV4n3EXzOa1wfIQXqQbBsW1Zt9L2aCVffBaMoDYcl8IwkyjvQ",
-      "imageAlt": "A focused close-up of a child working on fine motor skills through playful therapy.",
+      "image": "/images/sections/play.jpg",
+      "imageAlt": "A paediatric occupational therapist and parent supporting a young child stacking blocks in a colourful play-therapy room.",
       "eyebrow": "Paediatric OT",
       "title": "Building Blocks of Play",
       "description": "Supporting the small skills that grow into big independence, one playful session at a time."
@@ -37,10 +37,11 @@
     },
     {
       "size": "medium",
-      "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDy_FFDOPf4u2e5sqc0wt6oOHO9NpPQKyGh7tlZJGdorgt0E_l1zAE04gscyMv2sqotpsIIojvktojaBd1QguDszFfTdrf2Prws9I_n_2d3_72lmwqnYQ6ZQHP0OD2PwDRHXuuqKA-J4JWbXWY65nzOOQbPPOk0NfJSCwH_5ukF6-5gQnTVPWEMqaF0iYwbXxaqsKOUu_cTn9vnO7LYKxpgrTKd24zvg2IMqkHtQxQmiix92OeKx5Iz4g",
+      "video": "/images/sections/video.mp4",
+      "image": "/images/sections/play.jpg",
       "imageAlt": "A warm, child-friendly therapy space with toys and soft natural light.",
       "title": "Everyday Confidence",
-      "description": "Lorem ipsum — turning daily routines into small wins that build a child's confidence at home and school."
+      "description": "Turning daily routines into small wins that build confidence."
     }
   ],
   "visionary": {
