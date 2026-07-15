@@ -9,4 +9,4 @@ echo "Type-checking and building..."
 npm run build
 
 echo "Deploying to Vercel (production)..."
-npx vercel --prod
+npx vercel --prod --yes
