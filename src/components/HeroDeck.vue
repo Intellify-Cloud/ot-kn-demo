@@ -22,7 +22,7 @@ defineProps<{
   >
     <!-- Background image, full-width cover -->
     <div
-      class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+      class="hero-bg absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
       :style="{ backgroundImage: `url('${image}')` }"
       role="img"
       :aria-label="imageAlt"
@@ -69,3 +69,12 @@ defineProps<{
     </div>
   </section>
 </template>
+
+<style scoped>
+/* On phones, shift the hero image 15% to the left (show more of its right side) */
+@media (max-width: 767px) {
+  .hero-bg {
+    background-position: 65% center;
+  }
+}
+</style>
