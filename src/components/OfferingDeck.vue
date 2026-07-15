@@ -20,7 +20,7 @@ defineProps<{ items: Discipline[] }>();
       <!-- Large image card -->
       <div
         v-if="item.size === 'large'"
-        class="group relative h-[400px] overflow-hidden rounded-xl border brass-border shadow-soft bg-surface md:col-span-8"
+        class="group relative h-[320px] overflow-hidden rounded-xl border brass-border shadow-soft bg-surface sm:h-[400px] md:col-span-12 lg:col-span-8"
       >
         <div
           class="zoom-bg absolute inset-0 bg-cover bg-center"
@@ -30,7 +30,7 @@ defineProps<{ items: Discipline[] }>();
         ></div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
         <div class="shimmer pointer-events-none absolute inset-0"></div>
-        <div class="absolute bottom-0 p-10 text-white">
+        <div class="absolute bottom-0 p-6 text-white sm:p-10">
           <span
             v-if="item.eyebrow"
             class="mb-4 inline-block rounded-full bg-secondary px-3 py-1 font-label-md text-label-md uppercase tracking-widest text-on-secondary"
@@ -45,7 +45,7 @@ defineProps<{ items: Discipline[] }>();
       <!-- Small text card -->
       <div
         v-else-if="item.size === 'small'"
-        class="flex flex-col justify-between rounded-xl border brass-border bg-surface-container-high p-8 shadow-soft md:col-span-4"
+        class="flex flex-col justify-between rounded-xl border brass-border bg-surface-container-high p-8 shadow-soft md:col-span-6 lg:col-span-4"
       >
         <div>
           <span class="material-symbols-outlined mb-6 text-4xl text-secondary">{{ item.icon }}</span>
@@ -61,7 +61,7 @@ defineProps<{ items: Discipline[] }>();
       <!-- Medium image card -->
       <div
         v-else
-        class="group relative h-[350px] overflow-hidden rounded-xl border brass-border shadow-soft bg-surface md:col-span-8"
+        class="group relative h-[300px] overflow-hidden rounded-xl border brass-border shadow-soft bg-surface sm:h-[350px] md:col-span-12 lg:col-span-8"
       >
         <video
           v-if="item.video"
@@ -84,7 +84,7 @@ defineProps<{ items: Discipline[] }>();
         ></div>
         <div class="absolute inset-0 bg-gradient-to-r from-primary/60 to-transparent"></div>
         <div class="shimmer pointer-events-none absolute inset-0"></div>
-        <div class="absolute inset-y-0 left-0 flex max-w-sm flex-col justify-center p-10 text-white">
+        <div class="absolute inset-y-0 left-0 flex max-w-sm flex-col justify-center p-6 text-white sm:p-10">
           <h3 class="mb-2 font-headline-lg text-headline-lg">{{ item.title }}</h3>
           <p class="font-body-md text-body-md opacity-90">{{ item.description }}</p>
         </div>
@@ -102,6 +102,15 @@ defineProps<{ items: Discipline[] }>();
 
 .group:hover .zoom-bg {
   transform: scale(1.04);
+}
+
+/* Video overscan: hides any baked-in edge/subpixel gap, keeps the same hover delta */
+video.zoom-bg {
+  transform: scale(1.05);
+}
+
+.group:hover video.zoom-bg {
+  transform: scale(1.09);
 }
 
 /* Diagonal light sweep on hover */
@@ -135,10 +144,16 @@ defineProps<{ items: Discipline[] }>();
   .group:hover .shimmer::after {
     animation: none;
   }
-  .zoom-bg,
-  .group:hover .zoom-bg {
+  .zoom-bg {
     transition: none;
+  }
+  .group:hover .zoom-bg {
     transform: none;
+  }
+  /* Keep the static overscan so the video edge stays hidden without animating */
+  video.zoom-bg,
+  .group:hover video.zoom-bg {
+    transform: scale(1.05);
   }
 }
 </style>

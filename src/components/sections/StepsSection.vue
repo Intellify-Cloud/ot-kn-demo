@@ -11,9 +11,9 @@ import { siteText } from "../../content/siteText";
     </div>
 
     <div class="relative">
-      <div class="absolute left-0 top-1/2 hidden h-0.5 w-full -translate-y-1/2 bg-outline-variant/30 md:block"></div>
+      <div class="absolute left-0 top-1/2 hidden h-0.5 w-full -translate-y-1/2 bg-outline-variant/30 lg:block"></div>
 
-      <div class="relative z-10 grid grid-cols-1 gap-gutter md:grid-cols-4">
+      <div class="relative z-10 grid grid-cols-1 gap-gutter sm:grid-cols-2 lg:grid-cols-4">
         <div
           v-for="step in siteData.steps"
           :key="step.number"

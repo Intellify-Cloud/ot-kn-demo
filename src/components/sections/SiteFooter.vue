@@ -6,7 +6,7 @@ import { siteText } from "../../content/siteText";
 
 <template>
   <footer class="mt-stack-lg rounded-t-xl border-t border-outline-variant/20 bg-surface-container">
-    <div class="mx-auto grid max-w-container-max grid-cols-1 gap-gutter px-margin-mobile py-stack-lg md:grid-cols-4 md:px-margin-desktop">
+    <div class="mx-auto grid max-w-container-max grid-cols-1 gap-gutter px-margin-mobile py-stack-lg sm:grid-cols-2 lg:grid-cols-4 md:px-margin-desktop">
       <div class="flex flex-col gap-4">
         <div class="font-headline-md text-headline-md font-bold text-primary">{{ siteData.brand.name }}</div>
         <p class="font-body-sm text-body-sm leading-relaxed text-on-surface-variant">

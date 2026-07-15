@@ -10,7 +10,7 @@ import { siteText } from "../../content/siteText";
 
     <div class="absolute inset-0 flex items-center justify-center bg-primary/20">
       <div
-        class="mx-margin-mobile max-w-md rounded-xl border border-secondary/20 bg-surface/95 p-10 text-center shadow-soft backdrop-blur-md"
+        class="mx-margin-mobile max-w-md rounded-xl border border-secondary/20 bg-surface/95 p-6 text-center shadow-soft backdrop-blur-md sm:p-10"
       >
         <h3 class="mb-4 font-headline-md text-headline-md text-primary">{{ siteText.contact.heading }}</h3>
         <p class="mb-6 font-body-md text-body-md text-on-surface-variant">{{ siteData.contact.address }}</p>
