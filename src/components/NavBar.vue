@@ -10,9 +10,13 @@ const mobileOpen = ref(false);
 
 <template>
   <header class="sticky top-0 z-50 border-b border-outline-variant/30 bg-surface/90 shadow-sm backdrop-blur-md">
-    <nav class="mx-auto flex h-20 max-w-container-max items-center justify-between px-margin-mobile md:px-margin-desktop">
-      <RouterLink to="/" class="font-headline-md text-headline-md font-bold text-primary" @click="mobileOpen = false">
-        {{ siteData.brand.name }}
+    <nav class="mx-auto flex h-[85px] max-w-container-max items-center justify-between px-margin-mobile md:px-margin-desktop">
+      <RouterLink to="/" class="flex items-center" @click="mobileOpen = false">
+        <img
+          :src="siteData.brand.logo"
+          :alt="`${siteData.brand.name} — Occupational Therapist`"
+          class="h-10 w-auto md:h-[85px] md:p-2.5"
+        />
       </RouterLink>
 
       <div class="hidden items-center gap-8 md:flex">
